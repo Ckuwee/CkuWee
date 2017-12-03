@@ -1,3 +1,6 @@
+'CkuWee App' 
+Createt by: Stilian Stilianov and Krasimir Kolev
+
 Project Starter Kit for React. Features:
 - Routing
 - User authentication: Register/Login/Logout

@@ -1,5 +1,5 @@
 'CkuWee App' 
-Createt by: Stilian Stilianov and Krasimir Kolev
+Created by: Stilian Stilianov and Krasimir Kolev
 
 Project Starter Kit for React. Features:
 - Routing

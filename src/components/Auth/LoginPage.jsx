@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Input from '../common/Input';
 import { login } from '../../api/remote';
 import { withRouter } from 'react-router-dom';
+import UserDashboard from '../HomePage/UserDashboard';
+import {errorLet} from '../../App.js';
 
  class LoginPage extends Component {
     constructor(props) {
@@ -10,7 +12,9 @@ import { withRouter } from 'react-router-dom';
         this.state = {
             username: '',
             password: '',
-            token : ''
+            token : '',
+            error: '',
+            currUser : ''
         };
 
         this.onChangeHandler = this.onChangeHandler.bind(this);
@@ -26,16 +30,30 @@ import { withRouter } from 'react-router-dom';
     async onSubmitHandler(e) {
         e.preventDefault();
       const   res = await login(this.state.username, this.state.password);
-      localStorage.setItem('token', res._kmd.authtoken);   
-        this.props.history.push('/plan')
+
+        if(res.error){
+            console.log(res)
+            this.setState({error: res.error});
+            return;
+        }
+            localStorage.setItem('token', res._kmd.authtoken); 
+         localStorage.setItem('username', res.username); 
+
+        this.props.history.push('/user') 
+         
+        
         
     }
          
     render() {
+
         return (
 
          
             <div className="container">
+                {errorLet}
+               <b style={{color: 'red'}}> {this.state.error} </b>
+
                 <h1>Login</h1>
                 <form onSubmit={this.onSubmitHandler}>
                     <Input

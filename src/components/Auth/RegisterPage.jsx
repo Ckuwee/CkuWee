@@ -16,7 +16,7 @@ import { withRouter } from 'react-router-dom';
 
         this.onChangeHandler = this.onChangeHandler.bind(this);
         this.onSubmitHandler = this.onSubmitHandler.bind(this);
-
+        this.login = this.login.bind(this);
         
     }
 
@@ -30,9 +30,12 @@ import { withRouter } from 'react-router-dom';
         const res =  await register(this.state.username, this.state.email, this.state.password);
 
          this.props.history.push('/login')
+         
     }
 
-    
+    login(){
+        this.props.history.push('/login')
+    }
 
     render() {
 
@@ -40,6 +43,8 @@ import { withRouter } from 'react-router-dom';
 
         return (
             <div className="container">
+
+        {<a href="javascript:void(0)" onClick={this.login}>Login</a>}
                 <h1>Register</h1>
                 <form onSubmit={this.onSubmitHandler}>
 
